@@ -6,7 +6,7 @@ phenoscanner.py allows users to query the PhenoScanner database of genotype-phen
 * Download the test files.
 
 # Usage
-\# Help
+\# Help  
 python phenoscanner.py --help  
 
 \# Single query  
