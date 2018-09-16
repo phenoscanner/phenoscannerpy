@@ -2,7 +2,8 @@
 phenoscanner.py allows users to query the PhenoScanner database of genotype-phenotype associations from a unix terminal.
 
 # Installation
-Download the phenoscanner.py file and place in the folder you would like to .
+* Download the phenoscanner.py file.  
+* Download the test files.
 
 # Help
 python phenoscanner.py --help
@@ -12,10 +13,10 @@ python phenoscanner.py --help
 python phenoscanner.py --snp=rs10840293  
 python phenoscanner.py --snp=True --infile=test_snp  
 
-\# Gene
+\# Gene  
 python phenoscanner.py --gene=SWAP70  
 python phenoscanner.py --gene=True --infile=test_gene  
 
-\#Region
+\#Region  
 python phenoscanner.py --location=chr11:9500000-10500000  
-python  
+python phenoscanner.py --location=True --infile=test_region 
