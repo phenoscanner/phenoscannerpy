@@ -118,17 +118,18 @@ if querysnp==1:
                 if 'error' in out:
                     print('Error: '+out['error']+" in chunk "+str(i+1))
                 else:
-                    if results==None:
+                    if results==None and 'results' in out:
                         results = out['results']
-                    else:
+                    if results and 'results' in out:
                         results = results + out['results'][1:] 
-                    if snps==None:
+                    if snps==None and 'snps' in out:
                         snps = out['snps']
-                    else:
+                    if snps and 'snps' in out:
                         snps = snps + out['snps'][1:]
                     print(str(i+1)+" -- chunk of 10 SNPs queried")
-            if results:
+            if snps:
                 fwrite(snps, outfile+"_PhenoScanner_SNP_Info.tsv")
+            if results:
                 fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
     else:
         if outfile==None:
@@ -137,11 +138,12 @@ if querysnp==1:
         out = json.load(query)
         if 'error' in out:
             print('Error: '+out['error'])
-        else:
+        if 'results' in out:
             results = out['results']
+            fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
+        if 'snps' in out:
             snps = out['snps']
             fwrite(snps, outfile+"_PhenoScanner_SNP_Info.tsv")
-            fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
             print(snp+" -- queried")
 
 if querygene==1:
@@ -162,17 +164,18 @@ if querygene==1:
                 if 'error' in out:
                     print('Error: '+out['error']+" for gene: "+qgenes[i])
                 else:
-                    if results==None:
+                    if results==None and 'results' in out:
                         results = out['results']
-                    else:
+                    if results and 'results' in out:
                         results = results + out['results'][1:]
-                    if genes==None:
+                    if genes==None and 'genes' in out:
                         genes = out['genes']
-                    else:
+                    if genes and 'genes' in out:
                         genes = genes + out['genes'][1:]
                     print(qgenes[i]+" -- queried")
-            if results:
+            if genes:
                 fwrite(genes, outfile+"_PhenoScanner_Gene_Info.tsv")
+            if results:
                 fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
     else:
         if outfile==None:
@@ -181,11 +184,12 @@ if querygene==1:
         out = json.load(query)
         if 'error' in out:
             print('Error: '+out['error'])
-        else:
+        if 'results' in out:
             results = out['results']
+            fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
+        if 'genes' in out:
             genes = out['genes']
             fwrite(genes, outfile+"_PhenoScanner_Gene_Info.tsv")
-            fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
             print(gene+" -- queried")
 
 if queryregion==1:
@@ -213,17 +217,18 @@ if queryregion==1:
                     if 'error' in out:
                         print('Error: '+out['error']+" for region: "+qregions[i])
                     else:
-                        if results==None:
+                        if results==None and 'results' in out:
                             results = out['results']
-                        else:
+                        if results and 'results' in out:
                             results = results + out['results'][1:]
-                        if regions==None:
+                        if regions==None and 'locations' in out:
                             regions = out['locations']
-                        else:
+                        if regions and 'locations' in out:
                             regions = regions + out['locations'][1:]
                         print(str(qregions[i])+" -- queried")
-                if results:
+                if regions:
                     fwrite(regions, outfile+"_PhenoScanner_Location_Info.tsv")
+                if results:
                     fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
     else:
         if outfile==None:
@@ -232,11 +237,12 @@ if queryregion==1:
         out = json.load(query)
         if 'error' in out:
             print('Error: '+out['error'])
-        else:
+        if 'results' in out:
             results = out['results']
+            fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
+        if 'locations' in out:
             regions = out['locations']
             fwrite(regions, outfile+"_PhenoScanner_Location_Info.tsv")
-            fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
             print(region+" -- queried")
 
 print("")
