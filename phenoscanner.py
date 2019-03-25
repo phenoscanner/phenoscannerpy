@@ -20,9 +20,13 @@ print("## Cardiovascular Epidemiology Unit                                      
 print("## University of Cambridge                                                   ##")
 print("## phenoscanner@gmail.com                                                    ##")
 print("##                                                                           ##")
-print("## 20/09/18                                                                  ##")
+print("## 25/03/19                                                                  ##")
 print("###############################################################################")
 print("")
+print("Information: Each user can query a maximum of 500 SNPs, 50 genes or 50 regions per hour. For large batch queries, please ask to download the data from www.phenoscanner.medschl.cam.ac.uk/data.")
+print("Terms of use: Please refer to the terms of use when using PhenoScanner V2 (www.phenoscanner.medschl.cam.ac.uk/about). If you use the results from PhenoScanner in a publication or presentation, please cite all of the relevant references of the data used and the PhenoScanner publication: Staley JR et al., Bioinformatics 2016; 32(20):3207-3209.")
+print("")
+
 
 parser = OptionParser()
 parser.add_option("--snp", default=".", dest="snp", help="query a SNP")
