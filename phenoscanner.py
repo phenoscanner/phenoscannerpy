@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os, re, urllib, json, sys, string
 from operator import sub
 from optparse import OptionParser
@@ -10,7 +12,10 @@ def freader(x):
 
 def fwrite(x, filename):
     with open(filename, 'w') as fp:
-        fp.writelines('\t'.join(i) + '\n' for i in x)
+        for i in x:
+            a='\t'.join(i) + '\n'
+            a=a.encode('utf-8')
+            fp.writelines(a);
 
 print("")
 print("###############################################################################")
@@ -36,7 +41,7 @@ parser.add_option("--catalogue", default="GWAS", help="catalogue of associations
 parser.add_option("--pvalue", default=1e-5, help="pvalue threshold")
 parser.add_option("--proxies", default="None", help="proxies to be queried (options: None, AFR, AMR, EAS, EUR, SAS)")
 parser.add_option("--r2", default=0.8, help="r2 threshold")
-parser.add_option("--build", default=37, help="r2 threshold")
+parser.add_option("--build", default=37, help="Genome Build (options : 37, 38)")
 parser.add_option("--infile", default=None, dest="infile", help="input file prefix", metavar="FILE")
 parser.add_option("--outfile", default=None, dest="outfile", help="output file prefix")
 parser.add_option("--wd", default=".", dest="wd", help="working directory")
@@ -125,7 +130,7 @@ if querysnp==1:
                     if results==None and 'results' in out:
                         results = out['results']
                     if results and 'results' in out:
-                        results = results + out['results'][1:] 
+                        results = results + out['results'][1:]
                     if snps==None and 'snps' in out:
                         snps = out['snps']
                     if snps and 'snps' in out:
@@ -134,7 +139,7 @@ if querysnp==1:
             if snps:
                 fwrite(snps, outfile+"_PhenoScanner_SNP_Info.tsv")
             if results:
-                fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
+		fwrite(results, outfile+"_PhenoScanner_"+catalogue+".tsv")
     else:
         if outfile==None:
             outfile = snp.replace(":", "-")
