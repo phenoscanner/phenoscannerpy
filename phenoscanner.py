@@ -1,4 +1,5 @@
-import os, re, urllib, json, sys, string
+import os, re, json, sys, string
+import urllib.request
 from operator import sub
 from optparse import OptionParser
 
@@ -117,7 +118,7 @@ if querysnp==1:
             if len(qsnps) % 10 > 0:
                 n_queries = n_queries + 1
             for i in range(n_queries):
-                query = urllib.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+"+".join(qsnps[i*10:(i+1)*10])+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
+                query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+"+".join(qsnps[i*10:(i+1)*10])+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
                 out = json.load(query)
                 if 'error' in out:
                     print('Error: '+out['error']+" in chunk "+str(i+1))
@@ -138,7 +139,7 @@ if querysnp==1:
     else:
         if outfile==None:
             outfile = snp.replace(":", "-")
-        query = urllib.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+snp+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
+        query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+snp+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
         out = json.load(query)
         if 'error' in out:
             print('Error: '+out['error'])
@@ -163,7 +164,7 @@ if querygene==1:
         else:
             n_queries = len(qgenes)
             for i in range(n_queries):
-                query = urllib.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?genequery="+qgenes[i]+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
+                query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?genequery="+qgenes[i]+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
                 out = json.load(query)
                 if 'error' in out:
                     print('Error: '+out['error']+" for gene: "+qgenes[i])
@@ -184,7 +185,7 @@ if querygene==1:
     else:
         if outfile==None:
             outfile = gene
-        query = urllib.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?genequery="+gene+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
+        query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?genequery="+gene+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
         out = json.load(query)
         if 'error' in out:
             print('Error: '+out['error'])
@@ -216,7 +217,7 @@ if queryregion==1:
             else:
                 n_queries = len(qregions)
                 for i in range(n_queries):
-                    query = urllib.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?regionquery="+qregions[i]+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
+                    query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?regionquery="+qregions[i]+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
                     out = json.load(query)
                     if 'error' in out:
                         print('Error: '+out['error']+" for region: "+qregions[i])
@@ -237,7 +238,7 @@ if queryregion==1:
     else:
         if outfile==None:
             outfile = region.replace(":", "-")
-        query = urllib.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?regionquery="+region+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
+        query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?regionquery="+region+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
         out = json.load(query)
         if 'error' in out:
             print('Error: '+out['error'])
