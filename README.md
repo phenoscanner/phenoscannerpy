@@ -1,5 +1,5 @@
 # phenoscanner.py
-phenoscanner.py allows users to query the PhenoScanner database of genotype-phenotype associations from a unix terminal.
+phenoscanner.py allows users to query the PhenoScanner database of genotype-phenotype associations from a unix terminal using python 3.
 
 ## Installation
 * Download the [phenoscanner.py](https://raw.githubusercontent.com/phenoscanner/phenoscannerpy/master/phenoscanner.py) file.  
