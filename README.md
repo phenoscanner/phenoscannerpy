@@ -28,8 +28,9 @@ python phenoscanner.py --gene=True --infile=test_gene
 python phenoscanner.py --region=chr11:9500000-10500000  
 python phenoscanner.py --region=True --infile=test_region 
 
-## Citation
-Staley JR et al. PhenoScanner: a database of human genotype-phenotype associations. Bioinformatics 2016;32(20):3207-3209.
+## Citations
+* Staley JR, et al. PhenoScanner: a database of human genotype-phenotype associations. Bioinformatics 2016;32(20):3207-3209.
+* Kamat MA, et al. PhenoScanner V2: an expanded tool for searching human genotype-phenotype associations. Bioinformatics 2019;35(22):4851-4853.
 
 ## Terms of use
 Please abide by the [terms of use](http://www.phenoscanner.medschl.cam.ac.uk/about/#terms) of PhenoScanner when using this tool.
