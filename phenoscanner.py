@@ -24,7 +24,7 @@ print("##                                                                       
 print("## 25/03/19                                                                  ##")
 print("###############################################################################")
 print("")
-print("Information: Each user can query a maximum of 500 SNPs, 50 genes or 50 regions per hour. For large batch queries, please ask to download the data from www.phenoscanner.medschl.cam.ac.uk/data.")
+print("Information: Each user can query a maximum of 10,000 SNPs (in batches of 100), 1,000 genes (in batches of 10) or 1,000 regions (in batches of 10) per hour. For large batch queries, please ask to download the data from www.phenoscanner.medschl.cam.ac.uk/data.")
 print("Terms of use: Please refer to the terms of use when using PhenoScanner V2 (www.phenoscanner.medschl.cam.ac.uk/about). If you use the results from PhenoScanner in a publication or presentation, please cite all of the relevant references of the data used and the PhenoScanner publications: www.phenoscanner.medschl.cam.ac.uk/about/#citation.")
 print("")
 
