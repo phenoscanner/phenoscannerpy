@@ -24,7 +24,7 @@ python phenoscanner.py --snp=True --infile=test_snp
 python phenoscanner.py --gene=SWAP70  
 python phenoscanner.py --gene=True --infile=test_gene  
 
-\#Region  
+\# Region  
 python phenoscanner.py --region=chr11:9500000-10500000  
 python phenoscanner.py --region=True --infile=test_region 
 
