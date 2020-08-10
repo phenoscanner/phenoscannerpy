@@ -13,11 +13,7 @@ def freader(x):
 
 def fwrite(x, filename):
     with open(filename, 'w') as fp:
-        # fp.writelines('\t'.join(i) + '\n' for i in x)
-        for i in x:
-            output='\t'.join(i) + '\n'
-            output=output.encode('utf-8')
-            fp.writelines(output)
+        fp.writelines('\t'.join(i) + '\n' for i in x)
 
 print("")
 print("###############################################################################")
