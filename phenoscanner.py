@@ -21,7 +21,7 @@ print("## Cardiovascular Epidemiology Unit                                      
 print("## University of Cambridge                                                   ##")
 print("## phenoscanner@gmail.com                                                    ##")
 print("##                                                                           ##")
-print("## 25/03/19                                                                  ##")
+print("## 10/08/20                                                                  ##")
 print("###############################################################################")
 print("")
 print("Information: Each user can query a maximum of 10,000 SNPs (in batches of 100), 1,000 genes (in batches of 10) or 1,000 regions (in batches of 10) per hour. For large batch queries, please ask to download the data from www.phenoscanner.medschl.cam.ac.uk/data.")
