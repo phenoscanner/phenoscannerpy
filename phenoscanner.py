@@ -121,7 +121,7 @@ if querysnp==1:
                 n_queries = n_queries + 1
             for i in range(n_queries):
                 query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+"+".join(qsnps[i*10:(i+1)*10])+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
-                out = json.load(query)
+                out = json.loads(query.read().decode('utf-8'))
                 if 'error' in out:
                     print('Error: '+out['error']+" in chunk "+str(i+1))
                 else:
@@ -142,7 +142,7 @@ if querysnp==1:
         if outfile==None:
             outfile = snp.replace(":", "-")
         query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+snp+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
-        out = json.load(query)
+        out = json.loads(query.read().decode('utf-8'))
         if 'error' in out:
             print('Error: '+out['error'])
         if 'results' in out:
@@ -167,7 +167,7 @@ if querygene==1:
             n_queries = len(qgenes)
             for i in range(n_queries):
                 query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?genequery="+qgenes[i]+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
-                out = json.load(query)
+                out = json.loads(query.read().decode('utf-8'))
                 if 'error' in out:
                     print('Error: '+out['error']+" for gene: "+qgenes[i])
                 else:
@@ -188,7 +188,7 @@ if querygene==1:
         if outfile==None:
             outfile = gene
         query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?genequery="+gene+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
-        out = json.load(query)
+        out = json.loads(query.read().decode('utf-8'))
         if 'error' in out:
             print('Error: '+out['error'])
         if 'results' in out:
@@ -220,7 +220,7 @@ if queryregion==1:
                 n_queries = len(qregions)
                 for i in range(n_queries):
                     query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?regionquery="+qregions[i]+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
-                    out = json.load(query)
+                    out = json.loads(query.read().decode('utf-8'))
                     if 'error' in out:
                         print('Error: '+out['error']+" for region: "+qregions[i])
                     else:
@@ -241,7 +241,7 @@ if queryregion==1:
         if outfile==None:
             outfile = region.replace(":", "-")
         query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?regionquery="+region+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies=None&r2=1&build="+str(build))
-        out = json.load(query)
+        out = json.loads(query.read().decode('utf-8'))
         if 'error' in out:
             print('Error: '+out['error'])
         if 'results' in out:
