@@ -37,7 +37,7 @@ parser.add_option("--catalogue", default="GWAS", help="catalogue of associations
 parser.add_option("--pvalue", default=1e-5, help="pvalue threshold")
 parser.add_option("--proxies", default="None", help="proxies to be queried (options: None, AFR, AMR, EAS, EUR, SAS)")
 parser.add_option("--r2", default=0.8, help="r2 threshold")
-parser.add_option("--build", default=37, help="r2 threshold")
+parser.add_option("--build", default=37, help="genome build (options: 37, 38)")
 parser.add_option("--infile", default=None, dest="infile", help="input file prefix", metavar="FILE")
 parser.add_option("--outfile", default=None, dest="outfile", help="output file prefix")
 parser.add_option("--wd", default=".", dest="wd", help="working directory")
