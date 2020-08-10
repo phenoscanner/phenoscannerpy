@@ -14,19 +14,19 @@ Multiple queries can be performed by using inputting a file containing the SNPs/
 
 ## Examples
 \# Help  
-python phenoscanner.py --help  
+python3 phenoscanner.py --help  
 
 \# SNP  
-python phenoscanner.py --snp=rs10840293  
-python phenoscanner.py --snp=True --infile=test_snp  
+python3 phenoscanner.py --snp=rs10840293  
+python3 phenoscanner.py --snp=True --infile=test_snp  
 
 \# Gene  
-python phenoscanner.py --gene=SWAP70  
-python phenoscanner.py --gene=True --infile=test_gene  
+python3 phenoscanner.py --gene=SWAP70  
+python3 phenoscanner.py --gene=True --infile=test_gene  
 
 \# Region  
-python phenoscanner.py --region=chr11:9500000-10500000  
-python phenoscanner.py --region=True --infile=test_region 
+python3 phenoscanner.py --region=chr11:9500000-10500000  
+python3 phenoscanner.py --region=True --infile=test_region 
 
 ## Citations
 * Staley JR, et al. PhenoScanner: a database of human genotype-phenotype associations. Bioinformatics 2016;32(20):3207-3209.
