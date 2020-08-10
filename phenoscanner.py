@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import os, re, json, sys, string
 import urllib.request
 from operator import sub
