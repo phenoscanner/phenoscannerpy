@@ -117,9 +117,9 @@ if querysnp==1:
             sys.exit('Error: a maximum of 100 SNP queries can be requested at one time')
         else:
             n_queries = len(qsnps) / 10
+            n_queries = math.floor(n_queries)
             if len(qsnps) % 10 > 0:
                 n_queries = n_queries + 1
-                n_queries = math.floor(n_queries)
             for i in range(n_queries):
                 query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+"+".join(qsnps[i*10:(i+1)*10])+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
                 out = json.loads(query.read().decode('utf-8'))
