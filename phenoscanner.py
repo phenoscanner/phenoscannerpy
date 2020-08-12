@@ -126,13 +126,13 @@ if querysnp==1:
                 if 'error' in out:
                     print('Error: '+out['error']+" in chunk "+str(i+1))
                 else:
-                    if results!=None and 'results' in out:
+                    if (results!=None) and ('results' in out):
                         results = results + out['results'][1:] 
-                    if results==None and 'results' in out:
+                    if (results==None) and ('results' in out):
                         results = out['results']
-                    if snps!=None and 'snps' in out:
+                    if (snps!=None) and ('snps' in out):
                         snps = snps + out['snps'][1:]
-                    if snps==None and 'snps' in out:
+                    if (snps==None) and ('snps' in out):
                         snps = out['snps']
                     print(str(i+1)+" -- chunk of 10 SNPs queried")
             if snps:
@@ -172,13 +172,13 @@ if querygene==1:
                 if 'error' in out:
                     print('Error: '+out['error']+" for gene: "+qgenes[i])
                 else:
-                    if results!=None and 'results' in out:
+                    if (results!=None) and ('results' in out):
                         results = results + out['results'][1:]
-                    if results==None and 'results' in out:
+                    if (results==None) and ('results' in out):
                         results = out['results']
-                    if genes!=None and 'genes' in out:
+                    if (genes!=None) and ('genes' in out):
                         genes = genes + out['genes'][1:]
-                    if genes==None and 'genes' in out:
+                    if (genes==None) and ('genes' in out):
                         genes = out['genes']
                     print(qgenes[i]+" -- queried")
             if genes:
@@ -225,13 +225,13 @@ if queryregion==1:
                     if 'error' in out:
                         print('Error: '+out['error']+" for region: "+qregions[i])
                     else:
-                        if results!=None and 'results' in out:
+                        if (results!=None) and ('results' in out):
                             results = results + out['results'][1:]
-                        if results==None and 'results' in out:
+                        if (results==None) and ('results' in out):
                             results = out['results']
-                        if regions!=None and 'locations' in out:
+                        if (regions!=None) and ('locations' in out):
                             regions = regions + out['locations'][1:]
-                        if regions==None and 'locations' in out:
+                        if (regions==None) and ('locations' in out):
                             regions = out['locations']
                         print(str(qregions[i])+" -- queried")
                 if regions:
