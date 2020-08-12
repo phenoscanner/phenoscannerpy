@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os, re, json, sys, string
+import os, re, json, sys, string, math
 import urllib.request
 from operator import sub
 from optparse import OptionParser
@@ -119,20 +119,21 @@ if querysnp==1:
             n_queries = len(qsnps) / 10
             if len(qsnps) % 10 > 0:
                 n_queries = n_queries + 1
+                n_queries = math.floor(n_queries)
             for i in range(n_queries):
                 query = urllib.request.urlopen("http://www.phenoscanner.medschl.cam.ac.uk/api/?snpquery="+"+".join(qsnps[i*10:(i+1)*10])+"&catalogue="+catalogue+"&p="+str(pvalue)+"&proxies="+proxies+"&r2="+str(r2)+"&build="+str(build))
                 out = json.loads(query.read().decode('utf-8'))
                 if 'error' in out:
                     print('Error: '+out['error']+" in chunk "+str(i+1))
                 else:
+                    if results!=None and 'results' in out:
+                        results = results + out['results'][1:] 
                     if results==None and 'results' in out:
                         results = out['results']
-                    if results and 'results' in out:
-                        results = results + out['results'][1:] 
+                    if snps!=None and 'snps' in out:
+                        snps = snps + out['snps'][1:]
                     if snps==None and 'snps' in out:
                         snps = out['snps']
-                    if snps and 'snps' in out:
-                        snps = snps + out['snps'][1:]
                     print(str(i+1)+" -- chunk of 10 SNPs queried")
             if snps:
                 fwrite(snps, outfile+"_PhenoScanner_SNP_Info.tsv")
@@ -171,14 +172,14 @@ if querygene==1:
                 if 'error' in out:
                     print('Error: '+out['error']+" for gene: "+qgenes[i])
                 else:
+                    if results!=None and 'results' in out:
+                        results = results + out['results'][1:]
                     if results==None and 'results' in out:
                         results = out['results']
-                    if results and 'results' in out:
-                        results = results + out['results'][1:]
+                    if genes!=None and 'genes' in out:
+                        genes = genes + out['genes'][1:]
                     if genes==None and 'genes' in out:
                         genes = out['genes']
-                    if genes and 'genes' in out:
-                        genes = genes + out['genes'][1:]
                     print(qgenes[i]+" -- queried")
             if genes:
                 fwrite(genes, outfile+"_PhenoScanner_Gene_Info.tsv")
@@ -224,14 +225,14 @@ if queryregion==1:
                     if 'error' in out:
                         print('Error: '+out['error']+" for region: "+qregions[i])
                     else:
+                        if results!=None and 'results' in out:
+                            results = results + out['results'][1:]
                         if results==None and 'results' in out:
                             results = out['results']
-                        if results and 'results' in out:
-                            results = results + out['results'][1:]
+                        if regions!=None and 'locations' in out:
+                            regions = regions + out['locations'][1:]
                         if regions==None and 'locations' in out:
                             regions = out['locations']
-                        if regions and 'locations' in out:
-                            regions = regions + out['locations'][1:]
                         print(str(qregions[i])+" -- queried")
                 if regions:
                     fwrite(regions, outfile+"_PhenoScanner_Location_Info.tsv")
